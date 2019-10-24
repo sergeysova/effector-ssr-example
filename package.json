@@ -1,0 +1,24 @@
+{
+  "name": "effector-ssr",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node main"
+  },
+  "author": "Sergey Sova <mail@sergeysova.com> (https://sergeysova.com/)",
+  "license": "MIT",
+  "dependencies": {
+    "@koa/router": "^8.0.2",
+    "effector": "^20.4.2",
+    "effector-react": "^20.4.0",
+    "isomorphic-fetch": "^2.2.1",
+    "koa": "^2.10.0",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0"
+  },
+  "devDependencies": {
+    "prettier": "^1.18.2"
+  }
+}
