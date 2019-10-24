@@ -1,19 +1,35 @@
 require("isomorphic-fetch")
 const React = require("react")
-const ReactDom = require("react-dom/server")
 const h = React.createElement
+const ReactDom = require("react-dom/server")
+const Router = require("react-router-dom")
+const { matchRoutes, renderRoutes } = require("react-router-config")
 
-const { Scope, fork } = require("./effector")
-const { HomePage } = require("./pages/home")
+const { Scope, fork, createEvent } = require("./effector")
+const { routes } = require("./pages")
 
 const App = ({ scope }) => {
-  return h(Scope.Provider, { value: scope }, h(HomePage, null))
+  return h(Scope.Provider, { value: scope }, renderRoutes(routes))
 }
 
-async function render() {
-  const scope = await fork({ start: HomePage.preload, ctx: { user: "alice" } })
+const defaultEvent = createEvent()
 
-  const string = ReactDom.renderToString(h(App, { scope }))
+async function render(ctx, user) {
+  const routerContext = {}
+  const branch = matchRoutes(routes, ctx.path)
+
+  const scope = await fork({
+    start: branch[0].route.component.preload || defaultEvent,
+    ctx: { user },
+  })
+
+  const string = ReactDom.renderToString(
+    h(
+      Router.StaticRouter,
+      { location: ctx.url, context: routerContext },
+      h(App, { scope }),
+    ),
+  )
 
   return string
 }

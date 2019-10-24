@@ -6,8 +6,12 @@ const { render } = require("./src/app")
 const app = new Koa()
 const router = new Router()
 
-router.get("/", async (ctx, next) => {
-  ctx.body = await render()
+router.get("/alice", async (ctx, next) => {
+  ctx.body = await render(ctx, "alice")
+})
+
+router.get("/bob", async (ctx) => {
+  ctx.body = await render(ctx, "bob")
 })
 
 app
