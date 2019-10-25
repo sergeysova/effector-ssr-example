@@ -269,7 +269,7 @@ function cloneGraph(unit) {
     req,
     scope: {
       find: findClone,
-      node: Effector.createNode({
+      graphite: Effector.createNode({
         node: [],
         meta: { unit: "domain" },
         family: {

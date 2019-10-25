@@ -1,6 +1,6 @@
-require("isomorphic-fetch")
 const React = require("react")
 const h = React.createElement
+const Effector = require("effector")
 const ReactDom = require("react-dom/server")
 const Router = require("react-router-dom")
 const { matchRoutes, renderRoutes } = require("react-router-config")
@@ -30,6 +30,8 @@ async function render(ctx, user) {
       h(App, { scope }),
     ),
   )
+
+  Effector.clearNode(scope)
 
   return string
 }

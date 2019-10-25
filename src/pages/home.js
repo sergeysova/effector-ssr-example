@@ -1,3 +1,4 @@
+const fetch = require("node-fetch")
 const React = require("react")
 const h = React.createElement
 const {
