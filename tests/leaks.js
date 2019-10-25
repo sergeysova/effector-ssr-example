@@ -17,19 +17,23 @@ describe("render", () => {
     await (await fetch()).json()
     console.timeEnd("fetch")
 
+    console.log("render 1 start")
     console.time("render")
     await render(
       { path: "/alice", url: "http://localhost:3000/alice" },
       "alice",
     )
     console.timeEnd("render")
+    console.log("render 1 end")
 
-    console.time("render")
+    console.log("render 2 start")
+    console.time("render2")
     await render(
       { path: "/alice", url: "http://localhost:3000/alice" },
       "alice",
     )
-    console.timeEnd("render")
+    console.timeEnd("render2")
+    console.log("render 2 end")
   })
   test.skip("does not leak", () =>
     iterate.async(async () => {
