@@ -383,6 +383,11 @@
   dependencies:
     "@types/yargs-parser" "*"
 
+"@zerobias/effector-react@20.4.0-bc68be1a":
+  version "20.4.0-bc68be1a"
+  resolved "https://npm.pkg.github.com/download/@zerobias/effector-react/20.4.0-bc68be1a/0ed722a973adbc5e170d55930151b5d33c62163ee4793394d322cc0e2f3c898e#f29a70af4f62522ace277a6e83e4530cd09a7aba"
+  integrity sha512-Xnut6FjeUHZG1CEMKuxpdCPOoAgGr6K/mgtKMuhdZJywUxJg7VrUDI7n0NxWrv9oqKs05h62lWi3nHkzoM4PLA==
+
 abab@^2.0.0:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/abab/-/abab-2.0.2.tgz#a2fba1b122c69a85caa02d10f9270c7219709a9d"
@@ -1034,11 +1039,6 @@ ee-first@1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/ee-first/-/ee-first-1.1.1.tgz#590c61156b0ae2f4f0255732a158b266bc56b21d"
   integrity sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
-
-effector-react@^20.4.0:
-  version "20.4.0"
-  resolved "https://registry.yarnpkg.com/effector-react/-/effector-react-20.4.0.tgz#58a327cce8a0223b8e1444b72b6e3c35874bc01b"
-  integrity sha512-IcjlvSEj0Pb7JEf4HJnNYx8KqpQZsy59zLlzPWmgfoDbkRP0hy9oke/JD4duSsYQxJN0WK2R40nO7ohhTK4PEg==
 
 effector@^20.4.2:
   version "20.4.2"

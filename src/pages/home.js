@@ -1,14 +1,9 @@
 const fetch = require("node-fetch")
 const React = require("react")
 const h = React.createElement
-const {
-  createEvent,
-  createEffect,
-  createStore,
-  forward,
-  useStore,
-  useList,
-} = require("../effector")
+const { forward } = require("effector")
+const { useStore, useList } = require("@zerobias/effector-react/ssr")
+const { createEvent, createEffect, createStore } = require("../effector")
 
 const users = {
   alice: "9s0p2",

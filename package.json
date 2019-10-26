@@ -11,8 +11,8 @@
   "license": "MIT",
   "dependencies": {
     "@koa/router": "^8.0.2",
+    "@zerobias/effector-react": "20.4.0-bc68be1a",
     "effector": "^20.4.2",
-    "effector-react": "^20.4.0",
     "koa": "^2.10.0",
     "node-fetch": "^2.6.0",
     "react": "^16.11.0",
