@@ -35,8 +35,6 @@ async function render({ ctx, user }) {
     ),
   )
 
-  Effector.clearNode(scope)
-
   return string
 }
 

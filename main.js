@@ -7,14 +7,8 @@ const app = new Koa()
 const router = new Router()
 
 router.get("/alice", async (ctx) => {
-  // const body = await render(ctx, "alice")
-  // ctx.body = body
   ctx.body = await render({ ctx, user: "alice" })
 })
-
-// router.get("/bob", async (ctx) => {
-//   ctx.body = await render(ctx, "bob")
-// })
 
 app
   .use(router.routes())
