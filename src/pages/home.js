@@ -16,9 +16,12 @@ const fetchUser = createEffect("fetchUser")
 const $user = createStore("guest", { name: "$user" })
 const $friends = createStore([], { name: "$friends" })
 const $friendsTotal = $friends.map((list) => list.length)
+const $query = createStore({})
 
-fetchUser.use(async ({ user }) => {
-  return (await fetch(`https://api.myjson.com/bins/${users[user]}`)).json()
+fetchUser.use(async ({ params }) => {
+  return (await fetch(
+    `https://api.myjson.com/bins/${users[params.name]}`,
+  )).json()
 })
 
 forward({
@@ -28,6 +31,7 @@ forward({
 
 $user.on(fetchUser.done, (_, { result }) => result.name)
 $friends.on(fetchUser.done, (_, { result }) => result.friends)
+$query.on(started, (_, { query }) => query)
 
 const User = () => {
   const user = useStore($user)
@@ -43,6 +47,32 @@ const Total = () => {
   return h("small", null, "Total: ", total)
 }
 
+const Query = () => {
+  const query = useStore($query)
+  const keys = Object.keys(query)
+
+  if (!keys.length) return null
+
+  return h(
+    "ul",
+    null,
+    h("h3", null, "Query"),
+    keys.map((key) =>
+      h(
+        "li",
+        { key },
+        h("b", null, key),
+        ": ",
+        h("span", null, asList(query[key])),
+      ),
+    ),
+  )
+}
+
+function asList(list) {
+  return Array.isArray(list) ? `[${list.join(", ")}]` : list
+}
+
 const HomePage = () => {
   return h(
     React.Fragment,
@@ -51,6 +81,7 @@ const HomePage = () => {
     h("b", null, "Friends:"),
     h("ol", null, h(Friends, null)),
     h(Total, null),
+    h(Query, null),
   )
 }
 

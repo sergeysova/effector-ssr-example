@@ -17,12 +17,11 @@ const App = ({ scope }) => {
 
 const defaultEvent = createEvent()
 
-async function render({ ctx, user }) {
+async function render(context) {
   const routerContext = {}
-  const branch = matchRoutes(routes, ctx.path)
+  const branch = matchRoutes(routes, context.path)
 
   const start = branch[0].route.component.preload || defaultEvent
-  const context = { user }
 
   const Scope = Ssr.createScope({ domain, start })
   const scope = await Ssr.fork(Scope, { ctx: context })
@@ -30,7 +29,7 @@ async function render({ ctx, user }) {
   const string = ReactDom.renderToString(
     h(
       Router.StaticRouter,
-      { location: ctx.url, context: routerContext },
+      { location: context.url, context: routerContext },
       h(App, { scope }),
     ),
   )
